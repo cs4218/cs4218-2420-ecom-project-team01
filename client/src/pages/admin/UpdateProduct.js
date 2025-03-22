@@ -248,8 +248,12 @@ const UpdateProduct = () => {
                     setShipping(value === "1");
                   }}
                   value={shipping ? "1" : "0"}>
-                  <Option value="0">No</Option>
-                  <Option value="1">Yes</Option>
+                  <Option data-testid="shipping-no" value="0">
+                    No
+                  </Option>
+                  <Option data-testid="shipping-yes" value="1">
+                    Yes
+                  </Option>
                 </Select>
               </div>
               <div className="mb-3">

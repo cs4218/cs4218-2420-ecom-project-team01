@@ -197,8 +197,8 @@ const CreateProduct = () => {
                     setShipping(value);
                   }}>
                   <Option value="" hidden></Option>
-                  <Option value="0">No</Option>
-                  <Option value="1">Yes</Option>
+                  <Option data-testid="shipping-no" value="0">No</Option>
+                  <Option  data-testid="shipping-yes"value="1">Yes</Option>
                 </Select>
               </div>
               <div className="mb-3">

@@ -77,7 +77,7 @@ test.describe("Add product to cart", () => {
   test("should add product to cart from product search page", async ({
     page,
   }) => {
-    await page.goto("/");
+    await page.goto("/search");
 
     await page.getByRole("searchbox", { name: /search/i }).fill("textbook");
     await page.getByRole("button", { name: /search/i }).click();

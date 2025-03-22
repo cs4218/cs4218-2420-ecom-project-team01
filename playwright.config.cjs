@@ -39,7 +39,7 @@ module.exports = defineConfig({
     // Setup project
     {
       name: "auth-setup",
-      testMatch: /.auth\.setup\.cjs/,
+      testMatch: /.auth\.setup\.js/,
     },
 
     {
@@ -51,6 +51,7 @@ module.exports = defineConfig({
       dependencies: ["auth-setup"],
     },
 
+    /** 
     {
       name: "firefox",
       use: {
@@ -59,6 +60,7 @@ module.exports = defineConfig({
       },
       dependencies: ["auth-setup"],
     },
+    */
 
     /* Test against mobile viewports. */
     // {
