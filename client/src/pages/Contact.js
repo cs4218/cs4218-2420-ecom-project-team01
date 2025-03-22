@@ -25,7 +25,7 @@ const Contact = () => {
             <BiPhoneCall /> : 012-3456789
           </p>
           <p className="mt-3">
-            <BiSupport /> : 1800-0000-0000 (toll free)
+            <BiSupport /> : 1800-0000-0000 toll free
           </p>
         </div>
       </div>
