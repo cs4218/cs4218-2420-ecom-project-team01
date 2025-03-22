@@ -56,8 +56,11 @@ export const populateData = async () => {
       ...product,
       category: categoryMap[product.category],
       photo: {
-        data: imageToBase64(
-          path.resolve(__dirname, "seedData/photos", product.photo)
+        data: Buffer.from(
+          imageToBase64(
+            path.resolve(__dirname, "seedData/photos", product.photo)
+          ),
+          "base64"
         ),
         contentType: "image/jpg",
       },
