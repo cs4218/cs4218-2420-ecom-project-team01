@@ -5,6 +5,7 @@ sonar.organization=cjyothika
 # This is the name and version displayed in the SonarCloud UI.
 #sonar.projectName=cs4218-2420-ecom-project-team01
 #sonar.projectVersion=1.0
+sonar.javascript.lcov.reportPaths=./coverage/lcov.info
 
 
 # Path is relative to the sonar-project.properties file. Replace "\" by "/" on Windows.
