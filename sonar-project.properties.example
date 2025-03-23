@@ -1,26 +1,14 @@
-# SonarQube server settings
-sonar.host.url=http://localhost:9000
-sonar.token=<your-sonar-token>
+sonar.projectKey=cjyothika_cs4218-2420-ecom-project-team01
+sonar.organization=cjyothika
 
-# Project identification
-sonar.projectKey=econ
-sonar.projectName=econ
-sonar.projectVersion=1.0
 
-# Analysis settings
-sonar.sources=client,controllers
+# This is the name and version displayed in the SonarCloud UI.
+#sonar.projectName=cs4218-2420-ecom-project-team01
+#sonar.projectVersion=1.0
 
-# Coverage report path
-sonar.javascript.lcov.reportPaths=coverage/**/lcov.info
 
-# Specify Javascript as the main language
-sonar.language=js
+# Path is relative to the sonar-project.properties file. Replace "\" by "/" on Windows.
+#sonar.sources=.
 
-# Limit analysis to Javascript files in the specified sources
-sonar.inclusions=**/*.js,**/*.jsx
-
-# Exclude coverage analysis on test files
-sonar.coverage.exclusions=**/*.test.js
-
-# Ignore code duplication in test files
-sonar.cpd.exclusions=**/*.test.js
+# Encoding of the source code. Default is default system encoding
+#sonar.sourceEncoding=UTF-8

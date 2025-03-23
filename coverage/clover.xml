@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1742765391521" clover="3.2.0">
-  <project timestamp="1742765391522" name="All files">
+<coverage generated="1742767963099" clover="3.2.0">
+  <project timestamp="1742767963099" name="All files">
     <metrics statements="714" coveredstatements="430" conditionals="251" coveredconditionals="155" methods="109" coveredmethods="42" elements="1074" coveredelements="627" complexity="0" loc="714" ncloc="714" packages="13" files="25" classes="25"/>
     <package name="client.src.components">
       <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -531,11 +531,11 @@
         <line num="51" count="4" type="stmt"/>
         <line num="52" count="4" type="stmt"/>
         <line num="61" count="2" type="stmt"/>
-        <line num="62" count="5" type="stmt"/>
-        <line num="63" count="5" type="stmt"/>
-        <line num="64" count="4" type="stmt"/>
-        <line num="70" count="1" type="stmt"/>
-        <line num="71" count="1" type="stmt"/>
+        <line num="62" count="7" type="stmt"/>
+        <line num="63" count="7" type="stmt"/>
+        <line num="64" count="5" type="stmt"/>
+        <line num="70" count="2" type="stmt"/>
+        <line num="71" count="2" type="stmt"/>
         <line num="80" count="2" type="stmt"/>
         <line num="81" count="6" type="stmt"/>
         <line num="82" count="6" type="stmt"/>
