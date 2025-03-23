@@ -54,12 +54,17 @@ describe("Auth Helper Functions", () => {
     });
 
     test("should reject null password", async () => {
-      await expect(hashPassword(null)).rejects.toThrow("Password cannot be null or undefined");
+      await expect(hashPassword(null)).rejects.toThrow("");
       expect(bcrypt.hash).not.toHaveBeenCalled();
     });
 
     test("should reject undefined password", async () => {
-      await expect(hashPassword(undefined)).rejects.toThrow("Password cannot be null or undefined");
+      await expect(hashPassword(undefined)).rejects.toThrow("");
+      expect(bcrypt.hash).not.toHaveBeenCalled();
+    });
+
+    test("should reject empty string as password", async () => {
+      await expect(hashPassword("")).rejects.toThrow("Password cannot be null, undefined, or an empty string");
       expect(bcrypt.hash).not.toHaveBeenCalled();
     });
 
@@ -129,12 +134,17 @@ describe("Auth Helper Functions", () => {
     });
 
     test("should reject null password", async () => {
-      await expect(comparePassword(null, testHashedPassword)).rejects.toThrow("Password cannot be null or undefined");
+      await expect(comparePassword(null, testHashedPassword)).rejects.toThrow("Password cannot be null, undefined, or an empty string");
       expect(bcrypt.compare).not.toHaveBeenCalled();
     });
 
     test("should reject undefined password", async () => {
-      await expect(comparePassword(undefined, testHashedPassword)).rejects.toThrow("Password cannot be null or undefined");
+      await expect(comparePassword(undefined, testHashedPassword)).rejects.toThrow("Password cannot be null, undefined, or an empty string");
+      expect(bcrypt.compare).not.toHaveBeenCalled();
+    });
+
+    test("should reject empty string as password", async () => {
+      await expect(comparePassword("", testHashedPassword)).rejects.toThrow("Password cannot be null, undefined, or an empty string");
       expect(bcrypt.compare).not.toHaveBeenCalled();
     });
 
