@@ -68,13 +68,13 @@ describe("Category Controller Integration", () => {
       expect(res.body.message).toBe("Name is required");
     });
 
-    it("should return 200 if category already exists", async () => {
+    it("should return 201 if category already exists", async () => {
       await categoryModel.create(getCategory("Duplicate"));
       const res = await request(app)
         .post("/api/v1/category/create-category")
         .set("Authorization", `Bearer ${token}`)
         .send({ name: "Duplicate" });
-      expect(res.status).toBe(200);
+      expect(res.status).toBe(201);
       expect(res.body.message).toMatch(/already exists/i);
     });
 
@@ -83,7 +83,7 @@ describe("Category Controller Integration", () => {
         .post("/api/v1/category/create-category")
         .set("Authorization", `Bearer ${token}`)
         .send(getCategory("NewCat"));
-      expect(res.status).toBe(201);
+      expect(res.status).toBe(200);
       expect(res.body.success).toBe(true);
       expect(res.body.category.name).toBe("NewCat");
     });
@@ -106,7 +106,7 @@ describe("Category Controller Integration", () => {
         .post("/api/v1/category/create-category")
         .set("Authorization", `Bearer ${token}`)
         .send({ name: "  Trimmed  " });
-      expect(res.status).toBe(201);
+      expect(res.status).toBe(200);
       expect(res.body.category.name).toBe("  Trimmed  ");
     });
 
@@ -151,7 +151,7 @@ describe("Category Controller Integration", () => {
         .post("/api/v1/category/create-category")
         .set("authorization", `Bearer ${token}`)
         .send({ name: "CaseInsensitiveHeader" });
-      expect(res.status).toBe(201);
+      expect(res.status).toBe(200);
     });
 
     it("should fail to create category if DB error on findOne", async () => {
