@@ -13,9 +13,12 @@ const getShippingOption = (page, option) =>
   page.getByTestId(`shipping-${option === "Yes" ? "yes" : "no"}`);
 
 test.describe.serial("Create, update and delete product", () => {
+  // Short, unique id generation: https://chatgpt.com/share/67de5a32-6900-8001-b1b4-b97b54e7e06b
+  // Unique id is required to differentiate products only if running tests across different browsers in parallel 
   const uniqueId =
     (Date.now() % 1e8).toString(36) +
     Math.random().toString(36).substring(2, 4);
+
   const PRODUCT_DETAILS = {
     name: `${uniqueId} Corgi t-shirt`,
     description: `${uniqueId} A cute t-shirt`,

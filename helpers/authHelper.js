@@ -2,8 +2,8 @@ import bcrypt from "bcrypt";
 
 export const hashPassword = async (password) => {
     // Check if password is provided and is valid type
-    if (password === null || password === undefined) {
-        throw new Error("Password cannot be null or undefined");
+    if (password === null || password === undefined || password === "") {
+        throw new Error("Password cannot be null, undefined, or an empty string");
     }
     
     // Only allow strings and numbers as passwords
@@ -28,8 +28,8 @@ export const hashPassword = async (password) => {
 
 export const comparePassword = async (password, hashedPassword) => {
     // Check if password is provided and is valid type
-    if (password === null || password === undefined) {
-        throw new Error("Password cannot be null or undefined");
+    if (password === null || password === undefined || password === "") {
+        throw new Error("Password cannot be null, undefined, or an empty string");
     }
     
     // Only allow strings and numbers as passwords

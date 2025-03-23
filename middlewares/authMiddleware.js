@@ -29,6 +29,13 @@ export const requireSignIn = async (req, res, next) => {
         // Verify the JWT token
         const decode = JWT.verify(token, process.env.JWT_SECRET);
         req.user = decode;
+        
+        // Set axios authorization header for client requests
+        if (!req.headers.internal) {
+            // Only set this for non-internal requests to prevent circular dependencies
+            req.headers.authorization = `Bearer ${token}`;
+        }
+        
         next();
     } catch (error) {
         console.error(error);
