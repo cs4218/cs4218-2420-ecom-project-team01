@@ -1,29 +1,46 @@
 import { test, expect } from '@playwright/test';
 
-test('test', async ({ page }) => {
-  await page.locator('body').click();
-  await page.goto('http://localhost:3000/');
-  await page.getByRole('link', { name: 'Login' }).click();
-  await page.getByRole('textbox', { name: 'Enter Your Email' }).click();
-  await page.getByRole('textbox', { name: 'Enter Your Email' }).fill('cs4218@test.com');
-  await page.getByRole('textbox', { name: 'Enter Your Password' }).click();
-  await page.getByRole('textbox', { name: 'Enter Your Password' }).fill('cs4218@test.com');
-  await page.getByRole('button', { name: 'LOGIN' }).click();
-  await page.getByRole('button', { name: 'cs4218@test.com' }).click();
-  await page.getByRole('link', { name: 'Dashboard' }).click();
-  await page.getByRole('link', { name: 'Create Category' }).click();
-  await page.getByRole('textbox', { name: 'Enter new category' }).click();
-  await page.getByRole('button', { name: 'Submit' }).click();
-  await page.locator('.go2534082608').click();
-  await page.locator('div').filter({ hasText: /^somthing went wrong in input form$/ }).nth(2).click();
-  await page.getByRole('textbox', { name: 'Enter new category' }).click();
-  await page.getByRole('textbox', { name: 'Enter new category' }).fill('category 2');
-  await page.getByRole('textbox', { name: 'Enter new category' }).press('Enter');
-  await page.getByRole('button', { name: 'Submit' }).click();
-  await page.getByRole('cell', { name: 'category 2' }).click();
-  await page.getByRole('cell', { name: 'Edit Delete' }).nth(2).click();
-  await page.getByRole('button', { name: 'Edit' }).nth(2).click();
-  await page.getByRole('dialog').getByRole('textbox', { name: 'Enter new category' }).click();
-  await page.getByRole('dialog').getByRole('textbox', { name: 'Enter new category' }).fill('category 4');
-  await page.getByRole('dialog').getByRole('button', { name: 'Submit' }).click();
+test.describe('Category CRUD flow', () => {
+  test('should perform create, read, update, and delete operations for categories', async ({ page }) => {
+    // Login
+    await page.goto('http://localhost:3001/login');
+    await page.getByRole('textbox', { name: /email/i }).fill('cs4218@test.com');
+    await page.getByRole('textbox', { name: /password/i }).fill('cs4218@test.com');
+    await page.getByRole('button', { name: /login/i }).click();
+
+    // Navigate to create category
+    await page.getByRole('button', { name: /cs4218/i }).click();
+    await page.getByRole('link', { name: 'Dashboard' }).click();
+    await page.getByRole('link', { name: 'Create Category' }).click();
+
+    // Attempt to submit empty form
+    await page.getByRole('button', { name: 'Submit' }).click();
+    await expect(page.getByText(/somthing went wrong/i)).toBeVisible();
+
+    // Attempt to create duplicate category
+    await page.getByPlaceholder('Enter new category').fill('Clothing');
+    await page.getByRole('button', { name: 'Submit' }).click();
+    await expect(page.getByText(/already exists/i)).toBeVisible();
+
+    // Create another category
+    await page.getByPlaceholder('Enter new category').fill('Clothing1');
+    await page.getByRole('button', { name: 'Submit' }).click();
+    await expect(page.getByRole('cell', { name: 'Clothing1' })).toBeVisible();
+
+    // Edit category
+    await page.getByRole('button', { name: 'Edit' }).nth(1).click();
+    await page.getByRole('dialog').getByPlaceholder('Enter new category').fill('Clothing2');
+    await page.getByRole('dialog').getByRole('button', { name: 'Submit' }).click();
+    await expect(page.getByRole('cell', { name: 'Clothing2' })).toBeVisible();
+
+    // Delete category
+    await page.getByRole('button', { name: 'Delete' }).nth(1).click();
+    await page.getByRole('button', { name: 'Delete' }).nth(1).click(); 
+    await expect(page.getByRole('cell', { name: 'Clothing2' })).not.toBeVisible();
+
+    // View categories via nav
+    await page.getByRole('link', { name: 'Categories' }).click();
+    await page.getByRole('link', { name: 'All Categories' }).click();
+    await expect(page.getByTestId('category-list')).toBeVisible();
+  });
 });
