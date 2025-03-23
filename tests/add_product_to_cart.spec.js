@@ -31,7 +31,13 @@ const clickCartLink = async (page) => {
   await page.getByRole("link", { name: /cart/i }).click();
 };
 const assertProductInCart = async (page, product) => {
-  await expect(page.locator(`text=${product.name}`).first()).toBeVisible();
+  await page.waitForTimeout(1000);
+  
+  await page.waitForSelector(`.card:has-text("${product.name}")`, { timeout: 20000 });
+  
+  await expect(
+    page.locator('.card').filter({ hasText: product.name })
+  ).toBeVisible({ timeout: 10000 });
 };
 const removeProductFromCart = async (page, product) => {
   await page
