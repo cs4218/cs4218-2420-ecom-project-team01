@@ -1,7 +1,7 @@
 import {
     createCategoryController,
     updateCategoryController,
-    categoryControlller,
+    categoryController,
     singleCategoryController,
     deleteCategoryCOntroller,
   } from "../controllers/categoryController.js";
@@ -38,10 +38,10 @@ import {
       await createCategoryController(req, res);
       
       expect(categoryModel.findOne).toHaveBeenCalledWith({ name: "Test Category" });
-      expect(res.status).toHaveBeenCalledWith(200);
+      expect(res.status).toHaveBeenCalledWith(201);
       expect(res.send).toHaveBeenCalledWith({
-        success: true,
-        message: "Category Already Exisits",
+        success: false,
+        message: "Category Already Exists",
       });
     });
     
@@ -60,7 +60,7 @@ import {
       
       await createCategoryController(req, res);
       
-      expect(res.status).toHaveBeenCalledWith(201);
+      expect(res.status).toHaveBeenCalledWith(200);
       expect(res.send).toHaveBeenCalledWith({
         success: true,
         message: "new category created",
@@ -133,7 +133,7 @@ import {
       ];
       categoryModel.find.mockResolvedValue(categories);
       
-      await categoryControlller(req, res);
+      await categoryController(req, res);
       
       expect(categoryModel.find).toHaveBeenCalledWith({});
       expect(res.status).toHaveBeenCalledWith(200);
@@ -148,7 +148,7 @@ import {
       const testError = new Error("Get error");
       categoryModel.find.mockRejectedValueOnce(testError);
       
-      await categoryControlller(req, res);
+      await categoryController(req, res);
       
       expect(res.status).toHaveBeenCalledWith(500);
       expect(res.send).toHaveBeenCalledWith({

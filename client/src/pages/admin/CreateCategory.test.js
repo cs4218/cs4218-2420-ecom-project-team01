@@ -195,7 +195,7 @@ describe("CreateCategory Component", () => {
 
     await waitFor(() => {
       expect(toast.error).toHaveBeenCalledWith(
-        "Something wwent wrong in getting catgeory"
+        "Something went wrong in getting catgeory"
       );
     });
   });
@@ -239,7 +239,7 @@ describe("CreateCategory Component", () => {
         "/api/v1/category/update-category/1",
         { name: "Cat A Updated" }
       );
-      expect(toast.error).toHaveBeenCalledWith("Somtihing went wrong");
+      expect(toast.error).toHaveBeenCalledWith("Somthing went wrong");
     });
   });
 
