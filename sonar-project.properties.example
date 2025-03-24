@@ -2,11 +2,20 @@ sonar.projectKey=cjyothika_cs4218-2420-ecom-project-team01
 sonar.organization=cjyothika
 sonar.host.url=https://sonarcloud.io
 
-sonar.sources=src
-sonar.tests=tests
-sonar.inclusions=src/**/*.js
-sonar.test.inclusions=tests/**/*.test.js
+# Analysis settings
+sonar.sources=client,controllers
+
+# Coverage report path
 sonar.javascript.lcov.reportPaths=coverage/**/lcov.info
 
-# Optional: If you're using TypeScript or a framework like React
-sonar.typescript.lcov.reportPaths=coverage/**/lcov.info
+# Specify Javascript as the main language
+sonar.language=js
+
+# Limit analysis to Javascript files in the specified sources
+sonar.inclusions=**/*.js,**/*.jsx
+
+# Exclude coverage analysis on test files
+sonar.coverage.exclusions=**/*.test.js
+
+# Ignore code duplication in test files
+sonar.cpd.exclusions=**/*.test.js
