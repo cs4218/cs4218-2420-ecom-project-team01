@@ -9,15 +9,13 @@ test.describe('Category CRUD flow', () => {
     await page.getByRole('button', { name: /login/i }).click();
 
     // Navigate to create category
-    await page.getByRole('button', { name: /cs4218/i }).click();
-    await page.getByRole('link', { name: 'Dashboard' }).click();
-    await page.getByRole('link', { name: 'Create Category' }).click();
+    await page.goto('http://localhost:3001/dashboard/admin/create-category');
 
-    // Attempt to submit empty form
+    // Submit empty form
     await page.getByRole('button', { name: 'Submit' }).click();
     await expect(page.getByText(/somthing went wrong/i)).toBeVisible();
 
-    // Attempt to create duplicate category
+    // Create duplicate category
     await page.getByPlaceholder('Enter new category').fill('Clothing');
     await page.getByRole('button', { name: 'Submit' }).click();
     await expect(page.getByText(/already exists/i)).toBeVisible();
