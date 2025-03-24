@@ -1,6 +1,11 @@
-sonar.projectKey=cjyothika_cs4218-2420-ecom-project-team01
-sonar.organization=cjyothika
-sonar.host.url=https://sonarcloud.io
+# SonarQube server settings
+sonar.host.url=http://localhost:9000
+sonar.token=<your-sonar-token>
+
+# Project identification
+sonar.projectKey=econ
+sonar.projectName=econ
+sonar.projectVersion=1.0
 
 # Analysis settings
 sonar.sources=client,controllers
