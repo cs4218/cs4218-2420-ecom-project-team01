@@ -1,15 +1,13 @@
 sonar.projectKey=cjyothika_cs4218-2420-ecom-project-team01
 sonar.organization=cjyothika
+sonar.host.url=https://sonarcloud.io
 
+sonar.sources=src
+sonar.tests=tests
+sonar.inclusions=src/**/*.js
+sonar.test.inclusions=tests/**/*.test.js
+sonar.javascript.lcov.reportPaths=coverage/lcov.info
+sonar.coverage.exclusions=**/__tests__/**,**/*.test.js
 
-# This is the name and version displayed in the SonarCloud UI.
-#sonar.projectName=cs4218-2420-ecom-project-team01
-#sonar.projectVersion=1.0
-sonar.javascript.lcov.reportPaths=./coverage/lcov.info
-
-
-# Path is relative to the sonar-project.properties file. Replace "\" by "/" on Windows.
-#sonar.sources=.
-
-# Encoding of the source code. Default is default system encoding
-#sonar.sourceEncoding=UTF-8
+# Optional: If you're using TypeScript or a framework like React
+sonar.typescript.lcov.reportPaths=coverage/lcov.info
