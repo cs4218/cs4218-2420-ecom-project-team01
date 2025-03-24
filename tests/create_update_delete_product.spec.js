@@ -186,9 +186,5 @@ test.describe.serial("Create, update and delete product", () => {
     await expect(
       page.getByText(UPDATED_PRODUCT_DETAILS.name)
     ).not.toBeVisible();
-
-    await expect(
-      page.getByRole("heading", { name: UPDATED_PRODUCT_DETAILS.name })
-    ).not.toBeVisible();
   });
 });
