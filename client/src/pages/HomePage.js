@@ -89,14 +89,11 @@ const HomePage = () => {
     }
     setChecked(all);
   };
+
   useEffect(() => {
     if (!checked.length && (isAnyPriceSelected || !radio.length)) {
       getAllProducts();
-    }
-  }, [checked.length, radio.length]);
-
-  useEffect(() => {
-    if (checked.length || (radio.length && !isAnyPriceSelected)) {
+    } else {
       filterProduct();
     }
   }, [checked, radio]);
